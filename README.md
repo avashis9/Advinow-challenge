@@ -23,3 +23,36 @@ Below are all the tasks/expectations required to complete this challenge. These 
 As a note, FastAPI, uvicorn, sqlalchemy, and alembic are not required to be used and may be changed if desired. 
 Any of the existing files or variables can be and may need to be changed or updated, please be prepared to explain changes on the follow-up call.
 The final end result should be a filled database, two working APIs, and an accessible API docs page.
+
+# IMPLEMENTATION
+
+## Project Setup and Task Execution Order (EVERYTHING DONE ON MACOS so should work on Unix as well)
+
+This FastAPI project is built to manage business-symptom diagnostic data. Here's how I completed the challenge:
+
+### 1. Create and Define SQLAlchemy Data Models
+- Defined models: `Business`, `Symptom`, `BusinessSymptom` in `models.py`
+- Added relationships and foreign key constraints.
+
+###  2. Build `/business-symptoms` API Endpoint
+- Fetches and filters business + symptom data based on optional query params (`business_id`, `diagnostic`).
+
+###  3. Implement `/import-csv` Endpoint
+- Accepts `.csv` file uploads and populates DB.
+- Handles missing records and avoids duplicates.
+- Normalized False, No, 0 to `"false"`.
+- Ignored same business ids for now and used the provided csv to populate.
+
+###  4. Database Migration with Alembic
+- Used `alembic revision --autogenerate -m "init schema"` to create migration scripts.
+- Then applied with `alembic upgrade head`.
+- Still using sqllite on local
+
+### 🔲 5. To Create and Activate Virtual Environment
+python -m venv venv
+source venv/bin/activate   
+pip install -r requirements/requirements.txt
+
+
+- Start the app by running: python app/run.py
+
