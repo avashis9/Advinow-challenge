@@ -46,7 +46,7 @@ This FastAPI project is built to manage business-symptom diagnostic data. Here's
 ###  4. Database Migration with Alembic
 - Used `alembic revision --autogenerate -m "init schema"` to create migration scripts.
 - Then applied with `alembic upgrade head`.
-- Still using sqllite on local
+- Still using SQLite on local (thats why .env file still on git, not using postgres).
 
 ### 🔲 5. To Create and Activate Virtual Environment
 python -m venv venv
